@@ -3,7 +3,16 @@
 #handle sigterm
 _term() { 
 	echo "Caught SIGTERM signal!"
+	echo "killing pids $child and $myself"
 	kill -TERM "$child" 2>/dev/null
+	exit 1
+}
+
+_int() {
+	echo "Caught SIGINT signal!"
+	echo "killing pids $child and $myself"
+	kill -INT "$child" 2>/dev/null
+	exit 0
 }
 
 
@@ -36,9 +45,11 @@ do
 	$command &
 	child=$!
 	echo "Started $command as pid $child"
+	
+	myself=$$
 
 	trap _term TERM
-	
+	trap _int INT
 	sleep $interval
 done
 
