@@ -36,7 +36,7 @@ do
 	$command &
 	child=$!
 
-	trap _term SIGTERM
+	trap _term TERM
 	
 	sleep $interval
 done
