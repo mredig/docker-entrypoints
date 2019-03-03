@@ -3,14 +3,14 @@
 #handle sigterm
 _term() { 
 	echo "Caught SIGTERM signal!"
-	echo "killing pids $child and $myself"
+	echo "killing pid $child"
 	kill -TERM "$child" 2>/dev/null
 	exit 1
 }
 
 _int() {
 	echo "Caught SIGINT signal!"
-	echo "killing pids $child and $myself"
+	echo "killing pid $child"
 	kill -INT "$child" 2>/dev/null
 	exit 1
 }
