@@ -15,8 +15,15 @@ _int() {
 	exit 1
 }
 
+_hup() {
+	echo "Caught SIGHUP signal!"
+	echo "Passing through to $command"
+	kill -s HUP "$child" 2>/dev/null
+}
+
 trap _term TERM
 trap _int INT
+trap _hup HUP
 
 
 command='pwd'
