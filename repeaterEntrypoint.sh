@@ -80,7 +80,7 @@ do
 	while [ $sleepRemain -gt 0 ]; do
 		# echo "Sleeping: $sleepRemain remaining"
 		sleep 1
-		let sleepRemain=$sleepRemain-1
+		sleepRemain=$(expr $sleepRemain - 1)
 	done
 done
 
