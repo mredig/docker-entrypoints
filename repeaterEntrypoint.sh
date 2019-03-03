@@ -6,7 +6,6 @@ _term() {
 	kill -TERM "$child" 2>/dev/null
 }
 
-trap _term SIGTERM
 
 
 interval=60
@@ -36,6 +35,8 @@ while true
 do
 	$command &
 	child=$!
+
+	trap _term SIGTERM
 	
 	sleep $interval
 done
