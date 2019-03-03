@@ -35,6 +35,7 @@ while true
 do
 	$command &
 	child=$!
+	echo "Started $command as pid $child"
 
 	trap _term TERM
 	
