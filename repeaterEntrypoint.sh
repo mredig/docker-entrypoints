@@ -27,7 +27,7 @@ runCommand() {
 	processRunning=$?
 	# echo "'$child' running: $processRunning"
 	if [ "$processRunning" = "0" ]; then
-		echo "Process already running, delaying until next attempt"
+		echo "Process ($child) already running, delaying until next attempt"
 	else
 		$command &
 		child=$!
